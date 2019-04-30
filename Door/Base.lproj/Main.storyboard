@@ -807,7 +807,7 @@
                                                     </connections>
                                                 </textFieldCell>
                                                 <connections>
-                                                    <binding destination="tk2-H0-XCT" name="value" keyPath="selection.innerText" id="Obu-rU-QAr">
+                                                    <binding destination="his-IT-Erz" name="value" keyPath="selection.innerText" id="woE-GQ-Xnb">
                                                         <dictionary key="options">
                                                             <bool key="NSConditionallySetsEnabled" value="YES"/>
                                                             <bool key="NSContinuouslyUpdatesValue" value="YES"/>
