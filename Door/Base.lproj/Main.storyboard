@@ -845,9 +845,10 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
-                                                    <binding destination="tk2-H0-XCT" name="value" keyPath="selection.colorValue" id="r1i-e7-NuI">
+                                                    <binding destination="tk2-H0-XCT" name="value" keyPath="selection.color" id="oXG-Wn-PJ9">
                                                         <dictionary key="options">
                                                             <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                                            <string key="NSValueTransformerName">CSSColorTransformer</string>
                                                         </dictionary>
                                                     </binding>
                                                 </connections>

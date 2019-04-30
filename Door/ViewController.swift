@@ -17,6 +17,16 @@ class ViewController: NSViewController {
     @IBOutlet var valueSlider: NSSlider!
     @IBOutlet var resultField: NSTextField!
 
+    override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
+        CSSColorTransformer.register()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    required init?(coder: NSCoder) {
+        CSSColorTransformer.register()
+        super.init(coder: coder)
+    }
+
     @objc dynamic var domDocument: DOMDocument?
     @objc dynamic var domObject: WebScriptObject? {
         didSet {
@@ -184,4 +194,34 @@ extension NSColor {
         let stringValue = String(format: "rgb(%d, %d, %d)", rInt, gInt, bInt, aInt)
         return stringValue
     }
+}
+
+class CSSColorTransformer: ValueTransformer {
+    static func register() {
+        ValueTransformer.setValueTransformer(CSSColorTransformer(), forName: .cssColorTransformerName)
+    }
+
+    override class func transformedValueClass() -> AnyClass {
+        return NSColor.self
+    }
+
+    override class func allowsReverseTransformation() -> Bool {
+        return true
+    }
+
+    // String to NSColor
+    override func transformedValue(_ value: Any?) -> Any? {
+        guard let stringValue = value as? String else { return nil }
+        return NSColor(cssString: stringValue)
+    }
+
+    // NSColor to String
+    override func reverseTransformedValue(_ value: Any?) -> Any? {
+        guard let colorValue = value as? NSColor else { return nil }
+        return colorValue.cssString
+    }
+}
+
+extension NSValueTransformerName {
+    static let cssColorTransformerName = NSValueTransformerName(rawValue: "CSSColorTransformer")
 }
