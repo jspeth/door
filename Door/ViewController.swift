@@ -130,9 +130,23 @@ extension ViewController: WebFrameLoadDelegate {
     }
 }
 
+/* JGS
+extension DOMDocument {
+    @objc var childNodesJGS: [DOMNode] {
+        var nodes: [DOMNode] = []
+        nodes.append(childNodes.item(0))
+        return nodes
+    }
+}
+*/
+
 extension DOMNodeList {
     @objc var count: UInt32 {
         return length
+    }
+
+    @objc func object(at index: Int) -> Any {
+        return item(UInt32(index))
     }
 }
 
