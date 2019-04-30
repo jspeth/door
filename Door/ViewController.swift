@@ -140,15 +140,15 @@ extension ViewController: WebFrameLoadDelegate {
     }
 }
 
-/* JGS
-extension DOMDocument {
+extension DOMNode {
     @objc var childNodesJGS: [DOMNode] {
         var nodes: [DOMNode] = []
-        nodes.append(childNodes.item(0))
+        for i in 0..<childNodes.length {
+            nodes.append(childNodes.item(i))
+        }
         return nodes
     }
 }
-*/
 
 extension DOMNodeList {
     @objc var count: UInt32 {
