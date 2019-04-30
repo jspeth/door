@@ -22,7 +22,7 @@
 		4A090A7B221F5F7700E4D274 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A090A7D221F5F7700E4D274 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A090A7E221F5F7700E4D274 /* Door.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Door.entitlements; sourceTree = "<group>"; };
-		4A090B5E22220C5D00E4D274 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		4A090B5E22220C5D00E4D274 /* index.html */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
