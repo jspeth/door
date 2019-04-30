@@ -17,20 +17,21 @@ class ViewController: NSViewController {
     @IBOutlet var valueSlider: NSSlider!
     @IBOutlet var resultField: NSTextField!
 
-    @objc var domDocument: DOMDocument?
+    @objc dynamic var domDocument: DOMDocument?
+    @objc dynamic var domObject: WebScriptObject? {
+        didSet {
+            print("JGS - domObject: \(String(describing: domObject))")
+        }
+    }
     @objc var stringValue: String? {
         didSet {
-            print("JGS - stringValue: \(stringValue)")
-            //guard let document = webView.mainFrame.domDocument else { return }
-            //document.setValue(stringValue, forKeyPath: "body.firstChild.data")
+            print("JGS - stringValue: \(String(describing: stringValue))")
             setValue(sender: nil)
         }
     }
     @objc var doubleValue: Double = 0 {
         didSet {
             print("JGS - doubleValue: \(doubleValue)")
-            //guard let document = webView.mainFrame.domDocument else { return }
-            //document.setValue(stringValue, forKeyPath: "body.firstChild.data")
             setDoubleValue(sender: nil)
         }
     }
@@ -71,6 +72,9 @@ class ViewController: NSViewController {
         let result = "\(String(describing: obj))"
         print("\(keyPath) -> \(result)")
         resultField.stringValue = result
+
+        // set current dom object
+        domObject = obj as? WebScriptObject
     }
 
     // Example:
@@ -123,6 +127,12 @@ extension ViewController: WebFrameLoadDelegate {
         guard frame == sender.mainFrame else { return }
         urlField.stringValue = sender.mainFrameURL
         domDocument = frame.domDocument
+    }
+}
+
+extension DOMNodeList {
+    @objc var count: UInt32 {
+        return length
     }
 }
 
